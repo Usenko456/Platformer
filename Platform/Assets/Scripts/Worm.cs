@@ -19,5 +19,7 @@ public class Worm : Entity
 
         if (lives < 1)
             Die();
+        //Check
     }
+
 }
