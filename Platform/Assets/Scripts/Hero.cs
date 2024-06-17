@@ -1,19 +1,25 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEditor.VersionControl.Asset;
+
 
 public class Hero : Entity
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private int lives = 5;
     [SerializeField] private float jumpForse = 15f;
     public static Hero Instance { get;set; }
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
     private bool isgrounded = false;
+    private void Start()
+    {
+       
+        lives = 5;
+    }
     public void Awake()
     {
         Instance = this;
@@ -28,11 +34,7 @@ public class Hero : Entity
         transform.position=Vector3.MoveTowards(transform.position, transform.position+dir, speed*Time.deltaTime);
         sprite.flipX = dir.x < 0.0f;
     }
-    public override void GetDamage()
-    {
-        lives -= 1;
-        Debug.Log(lives);
-    }
+    
     private void Jump ()
     {
         rb.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);

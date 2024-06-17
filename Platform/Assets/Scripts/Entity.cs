@@ -8,10 +8,11 @@ public class Entity : MonoBehaviour
     public virtual void GetDamage()
     {
         lives--;
+        Debug.Log(lives);
         if (lives < 1)
             Die();
     }
-
+    
     public virtual void Die()
     {
         Destroy(this.gameObject);

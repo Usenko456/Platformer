@@ -10,14 +10,15 @@ public class Worm : Entity
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (lives > 0 && collision.gameObject == Hero.Instance.gameObject)
+        if (collision.gameObject == Hero.Instance.gameObject)
         {
             Hero.Instance.GetDamage();
+            
             lives--;
             Debug.Log("у червяка " + lives);
         }
-
         if (lives < 1)
             Die();
+
     }
 }
