@@ -9,5 +9,8 @@ public class SceneMenegerScript : MonoBehaviour
         {
         SceneManager.LoadScene(sceneName);
         }
-
+        public void Quitgame()
+    {
+        Application.Quit();
+    }
 }
