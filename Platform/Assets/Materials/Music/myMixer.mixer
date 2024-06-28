@@ -17,7 +17,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 022a2a98808545c47a03ef1446d98b9d
-    name: MyExposedParam
+    name: music
   m_AudioMixerGroupViews:
   - guids:
     - 017293a6a44cff241a913892e4670160
@@ -70,6 +70,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 4e6d07a564f1e8d43ae56bc43865dd78
   m_FloatValues:
     022a2a98808545c47a03ef1446d98b9d: 0
+    148e50ee8cd1b254eaa8ae5cfa9b70ec: 0
   m_TransitionOverrides: {}
 --- !u!243 &1798795314530023913
 AudioMixerGroupController:
