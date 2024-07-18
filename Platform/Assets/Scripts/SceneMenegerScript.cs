@@ -8,6 +8,10 @@ public class SceneMenegerScript : MonoBehaviour
     public void LoadScene(string sceneName)
         {
         SceneManager.LoadScene(sceneName);
+        if (PauseMenu.gameispaused)
+        {
+            PauseMenu.Resume();
+        }
         }
         public void Quitgame()
     {
