@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    protected int lives;
+    public int coinnumber;
+    public int lives;
     public virtual void GetDamage()
     {
         lives--;

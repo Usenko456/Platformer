@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +10,20 @@ public class Camera_controller : MonoBehaviour
 
     private void Awake()
     {
-        if (!player)
-            player = FindObjectOfType<Hero>().transform;
+        Hero foundHero = FindObjectOfType<Hero>();
+        if (foundHero != null)
+        {
+            player = foundHero.transform;
+        }
     }
 
     private void Update()
     {
-        pos = player.position;
-        pos.z = -10f;
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+        if (player != null)
+        {
+            pos = player.position;
+            pos.z = -10f;
+            transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+        }
     }
 }

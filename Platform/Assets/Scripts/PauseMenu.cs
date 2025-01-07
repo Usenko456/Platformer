@@ -1,20 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
    public static bool gameispaused = false;
    public GameObject pauseMenuUI;
-
+   
     private void Start()
     {
-        pauseMenuUI.SetActive(false);
+            pauseMenuUI.SetActive(false);
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(gameispaused)
+            if (gameispaused)
             {
                 Resume();
             }
@@ -24,17 +24,25 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        gameispaused = false;
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            gameispaused = false;
+        }
+        
     }
+
     public void Pause()
     {
-      
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        gameispaused = true;
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            gameispaused = true;
+        }
     }
 }

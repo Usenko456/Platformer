@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
@@ -13,12 +14,15 @@ public class SettingsMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if(settingsMenuUI != null)
+               
             settingsMenuUI.SetActive(false);
         }
     }
     public void settingsbuttonpressed()
     {
-        settingsMenuUI.SetActive(true);     
+        settingsMenuUI.SetActive(true);
+       
     }
     public void exitsettingsbuttonpressed()
     {

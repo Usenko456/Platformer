@@ -15,9 +15,9 @@ public class Hero : Entity
     private SpriteRenderer sprite;
     private Animator anim;
     private bool isgrounded = false;
+
     private void Start()
     {
-       
         lives = 5;
     }
     public void Awake()
@@ -71,5 +71,14 @@ public class Hero : Entity
     {
         get { return (States)anim.GetInteger("state"); }
         set { anim.SetInteger("state", (int)value); }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Coin")) return;
+        {
+            coinnumber++;
+            Debug.Log("Монет на рахунку " + coinnumber);
+            Destroy(other.gameObject);
+        }
     }
 }
