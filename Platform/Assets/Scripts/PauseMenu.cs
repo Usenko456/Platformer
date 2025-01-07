@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
    public GameObject pauseMenuUI;
    public GameObject RestartMenuUI;
     public Transform player; 
-   public float fallThreshold = -10f;
+  private float fallThreshold = -30f;
 
     private void Start()
     {
@@ -33,6 +33,8 @@ public class PauseMenu : MonoBehaviour
 
             Gameover(); 
         }
+       
+        
     }
     public void Gameover()
     {
@@ -40,7 +42,7 @@ public class PauseMenu : MonoBehaviour
 
     }
     public void RestartLevel()
-    {     
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void Resume()
@@ -56,6 +58,10 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        if (RestartMenuUI.activeSelf)  
+        {
+            return; 
+        }
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);

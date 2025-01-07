@@ -7,9 +7,11 @@ public class WalkingMonster : Entity
     
     private Vector3 direction;
     private SpriteRenderer sprite;
+    private LayerMask coinLayer;
     private void Awake()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
+        coinLayer = LayerMask.GetMask("Coin");
     }
     private void Start()
     {
@@ -17,7 +19,7 @@ public class WalkingMonster : Entity
     }
     private void Move()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 0.1f + transform.right * direction.x * 0.7f, 0.1f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 0.1f + transform.right * direction.x * 0.7f, 0.1f, ~coinLayer);
 
         if (colliders.Length > 0) direction *= -1f;
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, Time.deltaTime);
