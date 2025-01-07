@@ -25,7 +25,7 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         pointcount= waypoints.Length;
-        pointindex = 1;
+        pointindex = 0;
         targetpos = waypoints[pointindex].transform.position;
     }
     private void Update()

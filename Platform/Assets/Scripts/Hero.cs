@@ -8,6 +8,7 @@ using static UnityEditor.VersionControl.Asset;
 
 public class Hero : Entity
 {
+    public float fallThreshold = -10f;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForse = 15f;
     public static Hero Instance { get;set; }
@@ -60,6 +61,7 @@ public class Hero : Entity
         {
             Jump();
         }
+
     }
     public enum States
     {

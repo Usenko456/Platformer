@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
    public static bool gameispaused = false;
    public GameObject pauseMenuUI;
-   
+   public GameObject RestartMenuUI;
+    public Transform player; 
+   public float fallThreshold = -10f;
+
     private void Start()
     {
             pauseMenuUI.SetActive(false);
+            RestartMenuUI.SetActive(false);
     }
 
     void Update()
@@ -23,8 +28,21 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
-    }
+        if (player.position.y < fallThreshold)
+        {
 
+            Gameover(); 
+        }
+    }
+    public void Gameover()
+    {
+        RestartMenuUI.SetActive(true);
+
+    }
+    public void RestartLevel()
+    {     
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void Resume()
     {
         if (pauseMenuUI != null)
