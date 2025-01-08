@@ -9,7 +9,12 @@ public class SceneMenegerScript : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
-        public void Quitgame()
+    public static void Loadlastlevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level"+ ButtonActivasion.numberofunlockedlevels);
+    }
+    public void Quitgame()
     {
         Application.Quit();
     }

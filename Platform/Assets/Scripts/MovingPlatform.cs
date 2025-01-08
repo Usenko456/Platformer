@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private float speed = 1.5f;
+    [SerializeField] float speed;
     Vector3 targetpos;
     public GameObject ways;
     public Transform[] waypoints;
@@ -61,8 +61,11 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-        
-            collision.collider.transform.SetParent(null);
+            if (collision.collider != null && collision.collider.gameObject.activeInHierarchy)
+            {
+                collision.collider.transform.SetParent(null);
+            }
         }
     }
+
 }

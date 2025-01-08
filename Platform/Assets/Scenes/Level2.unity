@@ -12329,6 +12329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabb6800f10a0304cbe481033e3f7b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1.5
   ways: {fileID: 1750102949}
   waypoints: []
 --- !u!50 &2086520098
