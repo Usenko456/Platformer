@@ -23,13 +23,11 @@ public class ButtonActivasion : MonoBehaviour
     private void Update()
     {
         for (int i = 0; i < buttons.Length; i++)
-        {
-            
+        {     
             TextMeshPro buttonText = buttons[i].GetComponentInChildren<TextMeshPro>();
 
             if (buttonText != null)
-            {
-               
+            {     
                 buttonText.color = buttons[i].interactable ? normalTextColor : dimmedTextColor;
             }
         }

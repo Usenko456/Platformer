@@ -14,8 +14,8 @@ public class FinishChecker : MonoBehaviour
     public UnityEvent Myevents;
     [SerializeField] public string scene;
     [SerializeField] private Animator anim;
-    public Image dimPanel; // Силка на Image панелі затемнення
-    public float fadeDuration = 1f; // Тривалість затемнення
+    public Image dimPanel; 
+    public float fadeDuration = 1f; 
     int levelnumber;
 
     private void Start()
@@ -24,7 +24,6 @@ public class FinishChecker : MonoBehaviour
         if (dimPanel != null)
         {
             dimPanel.enabled = false;
-            // Початковий стан — прозорий
             SetAlpha(0);
         }
     }
@@ -32,7 +31,6 @@ public class FinishChecker : MonoBehaviour
     {
         if (other2D.CompareTag("Player"))
         {
-            // Викликаємо корутину із затримкою
             dimPanel.enabled = true;
             StartCoroutine(LoadSceneWithDelay());
             if (ButtonActivasion.numberofunlockedlevels == levelnumber)
@@ -45,13 +43,9 @@ public class FinishChecker : MonoBehaviour
 
     private IEnumerator LoadSceneWithDelay()
     {
-        // Викликаємо подію
         Myevents.Invoke();
-
-        // Затримка перед завантаженням сцени
         yield return new WaitForSeconds(time);
         float elapsedTime = 0f;
-
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -61,8 +55,6 @@ public class FinishChecker : MonoBehaviour
 
         }
         SetAlpha(endAlpha);
-
-        // Завантажуємо сцену
         SceneManager.LoadScene(scene);
     }
     private void SetAlpha(float alpha)
@@ -70,11 +62,7 @@ public class FinishChecker : MonoBehaviour
         Color color = dimPanel.color;
         color.a = alpha;
         dimPanel.color = color;
-    }
- 
-    
-    
- 
+    } 
 }
 
 

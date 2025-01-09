@@ -10,13 +10,11 @@ public class Bars : MonoBehaviour
 
     private Entity money;
     private Hero hhhrrr;
-
     private void Start()
     {
         money = FindObjectOfType<Hero>();
         hhhrrr = FindObjectOfType<Hero>();
     }
-
     private void Update()
     {
             Healthbarslider.value = hhhrrr.lives;
