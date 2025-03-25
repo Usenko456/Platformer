@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,10 @@ public class Entity : MonoBehaviour
         Debug.Log(lives);
         if (lives < 1)
             Die();
+        if (lives <= 0)
+        {
+            Die();
+        }
     }
     
     public virtual void Die()

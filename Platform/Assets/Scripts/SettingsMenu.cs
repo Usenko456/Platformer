@@ -28,4 +28,5 @@ public class SettingsMenu : MonoBehaviour
     {
         settingsMenuUI.SetActive(false);
     }
+    
 }

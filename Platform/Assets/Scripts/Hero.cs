@@ -48,7 +48,10 @@ public class Hero : Entity
     }
     private void FixedUpdate()
     {
-        checkground();
+        if (Hero.Instance.lives > 0)
+        {
+            checkground();
+        }
     }
 
     private void Update()

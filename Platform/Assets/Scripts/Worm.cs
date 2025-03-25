@@ -8,16 +8,27 @@ public class Worm : Entity
     {
         lives = 3;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == Hero.Instance.gameObject)
+        if (collision.gameObject == Hero.Instance.gameObject) 
         {
-            Hero.Instance.GetDamage();
-            
-            lives--;
-            Debug.Log("у червяка " + lives);
+            Vector2 contactPoint = collision.GetContact(0).point; 
+            Vector2 enemyPosition = transform.position;
+            float playerBottom = Hero.Instance.transform.position.y - Hero.Instance.GetComponent<Collider2D>().bounds.extents.y;
+
+            if (playerBottom > enemyPosition.y + 0.2f) 
+            {
+                lives--; 
+                Debug.Log("У черв'яка залишилось життів: " + lives);
+
+                if (lives < 1)
+                    Die();
+            }
+            else
+            {
+                Hero.Instance.GetDamage(); 
+            }
         }
-        if (lives < 1)
-            Die();
     }
 }

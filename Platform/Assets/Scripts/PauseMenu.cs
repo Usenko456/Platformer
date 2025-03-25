@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour
    public GameObject RestartMenuUI;
     public Transform player; 
   private float fallThreshold = -30f;
-
+    
     private void Start()
     {
             pauseMenuUI.SetActive(false);
@@ -28,18 +28,15 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
-        if (player.position.y < fallThreshold)
+        if (Hero.Instance.lives <= 0 || player.position.y < fallThreshold)
         {
-
-            Gameover(); 
+            Gameover();
         }
-       
-        
+
     }
     public void Gameover()
     {
         RestartMenuUI.SetActive(true);
-
     }
     public void RestartLevel()
     {
