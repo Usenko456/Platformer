@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.VersionControl.Asset;
 
 
 public class Hero : Entity
@@ -11,6 +9,7 @@ public class Hero : Entity
     public float fallThreshold = -10f;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForse = 15f;
+    [SerializeField] private LayerMask groundLayerMask;
     public static Hero Instance { get;set; }
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -31,7 +30,7 @@ public class Hero : Entity
     private void Run()
     {
         if (isgrounded) state = States.run_animation;
-        Vector3 dir = transform.right * Input.GetAxis("Horizontal");
+        Vector3 dir = transform.right * VirtualInput.Horizontal;
         transform.position=Vector3.MoveTowards(transform.position, transform.position+dir, speed*Time.deltaTime);
         sprite.flipX = dir.x < 0.0f;
     }
@@ -52,20 +51,21 @@ public class Hero : Entity
         {
             checkground();
         }
-    }
-
-    private void Update()
-    {
+        if (PauseMenu.gameispaused) return;
         if (isgrounded) state = States.Default;
-        
-        if (Input.GetButton("Horizontal"))
-        Run();
-        if (isgrounded && Input.GetButtonDown("Jump"))
+        if (VirtualInput.Horizontal != 0)
+        {
+            Run();
+        }
+        if (isgrounded && VirtualInput.JumpPressed)
         {
             Jump();
+            VirtualInput.JumpPressed = false;
+            isgrounded = false;
         }
-
     }
+
+   
     public enum States
     {
         Default,
